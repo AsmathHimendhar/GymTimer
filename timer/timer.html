@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <body style="background-color: rgba(0, 0, 241, 0.445)">
+    <center>
+      <button class="btn">START</button>
+      <button class="btnr">RESET</button>
+      <div id="count"></div>
+      <div><h1 id="m">Press START</h1></div>
+      <div>
+        <h1>
+          rep:
+          <span id="c">0</span>
+        </h1>
+      </div>
+    </center>
+    <script type="text/javascript" charset="utf-8">
+      const timer = 0;
+      const message = document.querySelector("#m");
+      const c = document.querySelector("#c");
+      const s = document.querySelector(".btn");
+      const r = document.querySelector(".btnr");
+
+      s.addEventListener("click", function () {
+        message.innerText = "faster.... faster...(30 sec)";
+        document.body.style.backgroundColor = "#ff0000ba";
+        let i = 1;
+        let o = 1;
+        let t = 1;
+        const timerInterval = setInterval(() => {
+          timer.innerText = i;
+          i += o;
+          if (i >= 31) {
+            i = 20;
+            o = -1;
+            message.innerText = "slower....slower...(20 sec)";
+            document.body.style.backgroundColor = "#008000c2";
+          } else if (i <= 0) {
+            o = 1;
+            c.innerText = t;
+            message.innerText = "faster.... faster...(30 sec)";
+            document.body.style.backgroundColor = "#ff0000ba";
+            t += 1;
+          }
+        }, 1000);
+
+        r.addEventListener("click", function () {
+          clearInterval(timerInterval);
+          c.innerText = 0;
+          document.body.style.backgroundColor = "#0000f171";
+          message.innerText = "Press START";
+          i = 1;
+          o = 1;
+          t = 1;
+        });
+      });
+    </script>
+  </body>
+</html>
